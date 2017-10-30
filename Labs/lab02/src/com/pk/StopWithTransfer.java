@@ -25,16 +25,17 @@ public class StopWithTransfer extends Stop{
     private void AssignTransfers(String... transfers){
         if(transfers.length!=0){
             Transfers = new String[transfers.length];
-            Arrays.copyOf(transfers, transfers.length);
+            int i=0;
+            for(String t : transfers) Transfers[i++] = t;
         }
     }
 
     @Override
     public String toString(){
         String s = super.toString();
-        String r = "Transfers : \n";
+        String r = "\nTransfers : \n";
         int i = 0;
-        for(String t : Transfers) r+=(i+" - "+t);
+        for(String t : Transfers) r+=("\t"+(1+i++)+" - "+t+"\n");
         return s+r;
     }
 }

@@ -23,6 +23,6 @@ public class Stop {
     }
 
     public String toString(){
-        return "Stop : "+Name+", next : "+(Next==null?"-none-":Next);
+        return "\nStop : "+Name+", next : "+(Next==null?"-none-":Next) + ", dystans : "+ metersTo + " metrów, czas : "+ minutesTo + " minut";
     }
 }
