@@ -73,6 +73,7 @@ fabric.properties
 Labs/\.idea/
 
 Labs/lab02/\.idea/
+<<<<<<< Updated upstream
 
 
 nbproject/private/
@@ -81,3 +82,6 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+=======
+/Labs/lab03/nbproject/private/
+>>>>>>> Stashed changes
