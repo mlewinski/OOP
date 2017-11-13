@@ -5,6 +5,8 @@
  */
 package lab03.main;
 
+import java.net.URL;
+import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,11 +16,19 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CfmMain extends javax.swing.JFrame {
     private DefaultTableModel model;
+    private CBryla[] Bryly;
     /**
      * Creates new form CfmMain
      */
     public CfmMain() {
         initComponents();
+        Bryly = new CBryla[5];
+        Bryly[0] = new CKula(1, 1);
+        Bryly[1] = new CPlyta(2, 2);
+        Bryly[2] = new CStozek(3, 3);
+        Bryly[3] = new CRura(4, 4, 4);
+        Bryly[4] = new CProstopadloscian(5, 5, 5);
+        jComboBox1.setSelectedIndex(0);
         String n[] = {"Nazwa", "Wartość"};
         model = new DefaultTableModel(null, n);
         jTable1.setModel(model);
@@ -47,6 +57,11 @@ public class CfmMain extends javax.swing.JFrame {
         jLabel1.setText("Wybierz bryłę :");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kula", "Płyta kołowa", "Stożek", "Rura", "Prostopadłościan" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -128,8 +143,22 @@ public class CfmMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        int idx = jComboBox1.getSelectedIndex();
+        Bryly[idx].PrzypiszDane(jTable1);
+        jLabel2.setText(String.format("I = %8.3f", Bryly[idx].MomentBezwladnosci()));
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        int idx = jComboBox1.getSelectedIndex();
+        String s = String.format("/resource/%d.png", idx+1);
+        URL imageURL = CfmMain.class.getResource(s);
+        if(imageURL != null){
+        ImageIcon im = new ImageIcon(imageURL);
+        ((CPaintPanel)jPanel1).AssignRys(im.getImage());
+        }
+        ((CPaintPanel)jPanel1).repaint();
+        Bryly[idx].PokazDane(jTable1, model);
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
