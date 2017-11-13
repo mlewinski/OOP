@@ -5,17 +5,24 @@
  */
 package lab03.main;
 
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Marek
  */
 public class CfmMain extends javax.swing.JFrame {
-
+    private DefaultTableModel model;
     /**
      * Creates new form CfmMain
      */
     public CfmMain() {
         initComponents();
+        String n[] = {"Nazwa", "Wartość"};
+        model = new DefaultTableModel(null, n);
+        jTable1.setModel(model);
+        jTable1.putClientProperty( "terminatedEditOnFocusLost", Boolean.TRUE);
     }
 
     /**
@@ -29,8 +36,9 @@ public class CfmMain extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jPanel1 = new javax.swing.JPanel();
+        jPanel1 = new CPaintPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -50,6 +58,19 @@ public class CfmMain extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 320, Short.MAX_VALUE)
         );
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Oblicz");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -152,5 +173,6 @@ public class CfmMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
