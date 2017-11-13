@@ -21,7 +21,11 @@ public class CfmMain extends javax.swing.JFrame {
      * Creates new form CfmMain
      */
     public CfmMain() {
-        initComponents();
+        initComponents();        
+        String n[] = {"Nazwa", "Wartość"};
+        model = new DefaultTableModel(null, n);
+        jTable1.setModel(model);
+        jTable1.putClientProperty( "terminatedEditOnFocusLost", Boolean.TRUE);
         Bryly = new CBryla[5];
         Bryly[0] = new CKula(1, 1);
         Bryly[1] = new CPlyta(2, 2);
@@ -29,10 +33,6 @@ public class CfmMain extends javax.swing.JFrame {
         Bryly[3] = new CRura(4, 4, 4);
         Bryly[4] = new CProstopadloscian(5, 5, 5);
         jComboBox1.setSelectedIndex(0);
-        String n[] = {"Nazwa", "Wartość"};
-        model = new DefaultTableModel(null, n);
-        jTable1.setModel(model);
-        jTable1.putClientProperty( "terminatedEditOnFocusLost", Boolean.TRUE);
     }
 
     /**
