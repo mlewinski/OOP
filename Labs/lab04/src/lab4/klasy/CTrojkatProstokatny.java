@@ -50,13 +50,14 @@ public class CTrojkatProstokatny implements IFigura {
         int ax[] = new int[N];
         int ay[] = new int[N];
         ax[0] = X0; ax[1] = X0 + A; ax[2] = X0;
-        ay[0] = Y0; ay[1] = Y0;     ay[2] = Y0 - B;
+        ay[0] = Y0; ay[1] = Y0; ay[2] = Y0 - B;
         Polygon p = new Polygon(ax, ay, 3);
         boolean res = p.contains(xk, yk);
-        if(res==Boolean.TRUE){
+        if(res==Boolean.TRUE) {
             offsetX = xk-X0;
             offsetY = yk-Y0;
-        }else{
+        }
+        else {
             offsetX = 0;
             offsetY = 0;
         }
