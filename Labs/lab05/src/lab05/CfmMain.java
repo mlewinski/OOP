@@ -289,7 +289,11 @@ public class CfmMain extends javax.swing.JFrame {
         listaImg.add(new ImageIcon(getClass().getResource("/resource/3.png"),""));
         
         for(int i = 0; i<listaImg.size();i++){
-            model3.addElement(listaImg.get(i));
+            try{
+                model3.addElement(listaImg.get(i));
+            } catch(IndexOutOfBoundsException e){
+                JOptionPane.showMessageDialog(this, "Index out of range");
+            }
         }
        
         
@@ -302,7 +306,7 @@ public class CfmMain extends javax.swing.JFrame {
         model1.addElement(listaInt.get(listaInt.size()-1));
         jTextField1.setText("");
         }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null,"Bad input data!");
+            JOptionPane.showMessageDialog(null,"Wrong format!");
             jTextField1.setText("");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -310,15 +314,15 @@ public class CfmMain extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         try{
-        CDaneOsob d = new CDaneOsob(jTextField2.getText(),jTextField3.getText(),Integer.decode(jTextField4.getText()));
-        listaOsob.add(d);
-        model2.addElement(listaOsob.get(listaOsob.size()-1));
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
+            CDaneOsob d = new CDaneOsob(jTextField2.getText(),jTextField3.getText(),Integer.decode(jTextField4.getText()));
+            listaOsob.add(d);
+            model2.addElement(listaOsob.get(listaOsob.size()-1));
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
         }catch(NumberFormatException e)
         {
-            JOptionPane.showMessageDialog(null, "\"Rok urodzenia\" must be a number");
+            JOptionPane.showMessageDialog(null, "Wrong format");
             jTextField4.setText("");
         }
     }//GEN-LAST:event_jButton2ActionPerformed

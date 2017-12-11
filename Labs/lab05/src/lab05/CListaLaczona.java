@@ -50,7 +50,7 @@ public class CListaLaczona<T> {
         ILE++;
      }
 
-     public T get(int idx)
+     public T get(int idx) throws IndexOutOfBoundsException
      {
          CElement ost = HEAD;
         int i = 0;
